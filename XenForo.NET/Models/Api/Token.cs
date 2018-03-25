@@ -1,4 +1,4 @@
-﻿namespace XenForo.NET.Models
+﻿namespace XenForo.NET.Models.Api
 {
     using System;
 

@@ -7,10 +7,10 @@
     using RestSharp;
     using RestSharp.Authenticators;
 
-    using XenForo.NET.Models;
+    using XenForo.NET.Models.Api;
     using XenForo.NET.Models.Enums;
 
-    public class XenforoApi
+    public partial class XenforoApi
     {
         /// <summary>
         /// Gets the rest client.

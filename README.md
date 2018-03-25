@@ -30,6 +30,13 @@ namespace XenForo.NET.Example
             if (XenForo.IsAuthenticated)
             {
                 // We are authenticated
+				
+				User User = XenForo.GetUser(Identifier: 1);
+
+                if (User != null)
+                {
+                    Console.WriteLine("[*] Username : " + User.Username + ".");
+                }
             }
             else
             {
