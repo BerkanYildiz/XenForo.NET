@@ -1,10 +1,4 @@
-# XenForo.NET
-C# client library for the XenForo (2) API add-on.
-
-# Example
-
-```csharp
-namespace XenForo.NET.Example
+﻿namespace XenForo.NET.Example
 {
     using System;
 
@@ -14,8 +8,8 @@ namespace XenForo.NET.Example
     {
         public const string Url             = "https://www.weplaylegit.com/api/";
 
-        public const string ClientId        = "<client id>";
-        public const string ClientSecret    = "<client secret>";
+        public const string ClientId        = "";
+        public const string ClientSecret    = "";
 
         /// <summary>
         /// Defines the entry point of the application.
@@ -25,23 +19,18 @@ namespace XenForo.NET.Example
             XenForoConfig Config = new XenForoConfig(Url, ClientId, ClientSecret);
             XenforoApi XenForo   = new XenforoApi(Config);
 
-            XenForo.Authenticate("<username>", "<password>");
+            XenForo.Authenticate("", "");
 
             if (XenForo.IsAuthenticated)
             {
-                // We are authenticated
+                Logging.Info(typeof(Program), "We are authenticated.");
             }
             else
             {
-                // We are not authenticated
+                Logging.Warning(typeof(Program), "XenForo.IsAuthenticated != true at Main().");
             }
 
             Console.ReadKey();
         }
     }
 }
-
-```
-
-# Licence
-This work is licensed under the MIT License.
