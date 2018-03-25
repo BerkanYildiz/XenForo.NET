@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("XenForo.NET")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("An open-source C# client library for the XenForo (2) API add-on.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("XenForo.NET")]

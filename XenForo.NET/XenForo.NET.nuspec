@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Berkan YILDIZ</authors>
+    <owners>Berkan YILDIZ</owners>
+    <licenseUrl>https://github.com/BerkanYildiz/XenForo.NET/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/BerkanYildiz/XenForo.NET</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>An open-source C# client library for the XenForo (2) API add-on.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>XenForo Library API</tags>
+	<dependencies>
+		<dependency id="RestSharp" version="106.2.1.0" />
+		<dependency id="Newtonsoft.Json" version="11.0.0.0" />
+		<dependency id="System.ValueTuple" version="4.0.2.0" />
+	</dependencies>
+  </metadata>
+</package>
