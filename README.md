@@ -31,7 +31,7 @@ namespace XenForo.NET.Example
             {
                 // We are authenticated
 				
-				User User = XenForo.GetUser(Identifier: 1);
+		User User = XenForo.GetUser(Identifier: 1);
 
                 if (User != null)
                 {
