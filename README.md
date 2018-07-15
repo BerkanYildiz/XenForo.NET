@@ -1,5 +1,5 @@
 # XenForo.NET
-C# client library for the XenForo (2) API add-on.
+C# client library for the [XenForo (2) API add-on](https://github.com/xfrocks/bdApi/tree/xenforo2).
 
 # Example
 
