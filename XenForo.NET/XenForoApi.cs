@@ -31,10 +31,10 @@
         /// <summary>
         /// Gets the token.
         /// </summary>
-        private Token Token
+        public Token Token
         {
             get;
-            set;
+            private set;
         }
 
         /// <summary>
