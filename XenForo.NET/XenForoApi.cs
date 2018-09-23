@@ -10,7 +10,7 @@
     using XenForo.NET.Models.Api;
     using XenForo.NET.Models.Enums;
 
-    public partial class XenforoApi
+    public partial class XenForoApi
     {
         /// <summary>
         /// Gets the rest client.
@@ -47,13 +47,13 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="XenforoApi"/> class.
+        /// Initializes a new instance of the <see cref="XenForoApi"/> class.
         /// </summary>
-        public XenforoApi(XenForoConfig Config)
+        public XenForoApi(XenForoConfig Config)
         {
             if (Config == null)
             {
-                throw new Exception("Config cannot be null at XenforoApi(Config)!");
+                throw new Exception("Config cannot be null at XenForoApi(Config)!");
             }
 
             this.Config = Config;
@@ -96,6 +96,9 @@
                             this.Token                  = new Token(Json.GetValue("access_token").ToObject<string>(), Json.GetValue("refresh_token").ToObject<string>(), TokenType.Query);
                             this.Client.Authenticator   = new OAuth2UriQueryParameterAuthenticator(this.Token.AccessKey);
                         }
+
+                        // Issue with latest update of the addon, temp fix :
+                        Client.AddDefaultParameter("oauth_token", Token.AccessKey, ParameterType.QueryString);
 
                         this.Token.SetDuration(TimeSpan.FromSeconds(Json.GetValue("expires_in").ToObject<int>()));
 

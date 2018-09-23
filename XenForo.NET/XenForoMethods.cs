@@ -10,7 +10,7 @@
 
     using XenForo.NET.Models;
 
-    public partial class XenforoApi
+    public partial class XenForoApi
     {
         /// <summary>
         /// Gets the user.
@@ -76,6 +76,37 @@
 
             var User        = (User) null;
             var Request     = new RestRequest("?users/{userId}").AddUrlSegment("userId", Identifier.ToString());
+            var Response    = await this.Client.ExecuteGetTaskAsync(Request);
+
+            if (Response.IsSuccessful)
+            {
+                var Json = JObject.Parse(Response.Content);
+
+                if (Json != null && Json.HasValues)
+                {
+                    if (Json.ContainsKey("user"))
+                    {
+                        User = JsonConvert.DeserializeObject<User>(Json["user"].ToString());
+                    }
+                }
+            }
+
+            return User;
+        }
+
+        /// <summary>
+        /// Gets our own user.
+        /// </summary>
+        /// <param name="Identifier">The identifier.</param>
+        public async Task<User> GetMeAsync()
+        {
+            if (this.IsAuthenticated == false)
+            {
+                throw new Exception("Identifier can't be -1 if the client is not authenticated.");
+            }
+
+            var User        = (User) null;
+            var Request     = new RestRequest("?users/me");
             var Response    = await this.Client.ExecuteGetTaskAsync(Request);
 
             if (Response.IsSuccessful)
