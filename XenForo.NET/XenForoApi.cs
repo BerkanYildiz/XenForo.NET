@@ -84,11 +84,7 @@
 
                 if (Json != null && Json.HasValues)
                 {
-                    if (!Json.ContainsKey("access_token"))
-                    {
-                        Logging.Warning(this.GetType(), "[*] Json.ContainsKey('access_token') != true at XenforoApi.Authenticate(Username, Password).");
-                    }
-                    else
+                    if (Json.ContainsKey("access_token"))
                     {
                         if (Json.GetValue("token_type").ToObject<string>() == "Bearer")
                         {
@@ -103,10 +99,7 @@
 
                         this.Token.SetDuration(TimeSpan.FromSeconds(Json.GetValue("expires_in").ToObject<int>()));
 
-                        // Check if authenticated
-
-                        Logging.Info(this.GetType(), "[*] The token expires in " + this.Token.Duration.TotalMinutes + " minute(s).");
-                        Logging.Info(this.GetType(), "[*] The token is <" + this.Token.AccessKey + ">.");
+                        // Check if we are authenticated..
 
                         int VisitorId = this.GetVisitorId();
 
@@ -114,22 +107,8 @@
                         {
                             this.IsAuthenticated = true;
                         }
-                        else
-                        {
-                            Logging.Warning(this.GetType(), "[*] VisitorId == -1 at XenforoApi.Authenticate(Username, Password).");
-                        }
                     }
                 }
-                else
-                {
-                    Logging.Warning(this.GetType(), "[*] Json == null || Json.HasValues != true at XenforoApi.Authenticate(Username, Password).");
-                }
-            }
-            else
-            {
-                Logging.Warning(this.GetType(), "[*] Response.IsSuccessful != true at XenforoApi.Authenticate(Username, Password).");
-                Logging.Warning(this.GetType(), "[*] ErrorCode    = " + Response.StatusCode + ".");
-                Logging.Warning(this.GetType(), "[*] ErrorMessage = " + Response.ErrorMessage + ".");
             }
         }
 
@@ -165,33 +144,9 @@
                             {
                                 VisitorId = SystemInfo.GetValue("visitor_id").ToObject<int>();
                             }
-                            else
-                            {
-                                Logging.Warning(this.GetType(), "[*] Json.ContainsKey('visitor_id') != true at XenforoApi.GetVisitorId().");
-                            }
-                        }
-                        else
-                        {
-                            Logging.Warning(this.GetType(), "[*] SystemInfo == null || SystemInfo.HasValues != true at XenforoApi.GetVisitorId()."); ;
                         }
                     }
-                    else
-                    {
-                        Logging.Warning(this.GetType(), "[*] Json.ContainsKey('system_info') != true at XenforoApi.GetVisitorId().");
-                    }
                 }
-                else
-                {
-                    Logging.Warning(this.GetType(), "[*] Json == null || Json.HasValues != true at XenforoApi.GetVisitorId().");
-                }
-            }
-            else
-            {
-                Logging.Warning(this.GetType(), "[*] Response.IsSuccessful != true at XenforoApi.GetVisitorId().");
-
-                Logging.Warning(this.GetType(), "[*] ErrorCode    = " + Response.StatusCode + ".");
-                Logging.Warning(this.GetType(), "[*] ErrorMessage = " + Response.ErrorMessage + ".");
-                Logging.Warning(this.GetType(), "[*] ErrorUrl     = " + Response.ResponseUri + ".");
             }
 
             return VisitorId;

@@ -46,7 +46,7 @@
         /// <param name="Url">The URL.</param>
         public void SetUrl(string Url)
         {
-            if (Uri.TryCreate(Url, UriKind.Absolute, out Uri Result) && (Result.Scheme == Uri.UriSchemeHttp || Result.Scheme == Uri.UriSchemeHttps) == false)
+            if (Uri.TryCreate(Url, UriKind.Absolute, out var Result) && (Result.Scheme == Uri.UriSchemeHttp || Result.Scheme == Uri.UriSchemeHttps) == false)
             {
                 throw new Exception("The URL passed as argument to XenForoConfig is invalid!");
             }
