@@ -67,7 +67,7 @@
         /// <param name="Password">The password.</param>
         public void Authenticate(string Username, string Password)
         {
-            var Request = new RestRequest("?oauth/token");
+            var Request = new RestRequest("?oauth/token", Method.POST);
 
             Request.AddParameter("client_id", this.Config.ClientId);
             Request.AddParameter("client_secret", this.Config.ClientSecret);
@@ -121,7 +121,7 @@
         private int GetVisitorId()
         {
             var VisitorId   = -1;
-            var Request     = new RestRequest();
+            var Request     = new RestRequest(Method.GET);
             var Response    = this.Client.Get(Request);
 
             if (Response.IsSuccessful)

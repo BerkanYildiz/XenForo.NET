@@ -34,7 +34,7 @@
             }
 
             var User        = (User) null;
-            var Request     = new RestRequest("?users/{userId}").AddUrlSegment("userId", Identifier.ToString());
+            var Request     = new RestRequest("?users/{userId}", Method.GET).AddUrlSegment("userId", Identifier.ToString());
             var Response    = this.Client.Get(Request);
 
             if (Response.IsSuccessful)
@@ -75,7 +75,7 @@
             }
 
             var User        = (User) null;
-            var Request     = new RestRequest("?users/{userId}").AddUrlSegment("userId", Identifier.ToString());
+            var Request     = new RestRequest("?users/{userId}", Method.GET).AddUrlSegment("userId", Identifier.ToString());
             var Response    = await this.Client.ExecuteGetTaskAsync(Request);
 
             if (Response.IsSuccessful)
@@ -106,7 +106,7 @@
             }
 
             var User        = (User) null;
-            var Request     = new RestRequest("?users/me");
+            var Request     = new RestRequest("?users/me", Method.GET);
             var Response    = await this.Client.ExecuteGetTaskAsync(Request);
 
             if (Response.IsSuccessful)
